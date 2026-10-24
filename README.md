@@ -1,30 +1,117 @@
-# AutoWorth — Car Price Predictor
+<div align="center">
 
-A Flask app that estimates a used car's price from its make, model, year, fuel type, and kilometres driven. The dashboard summarizes the included listings, and separate pages provide the estimator and project information.
+# 🚗 Auto Worth
 
-## Run on Windows
+**A machine learning regression model that estimates used-car prices from mileage, purchase year, and car model.**
 
-From this folder, create and activate a virtual environment:
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=flat-square&logo=jupyter&logoColor=white)
 
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+</div>
+
+---
+
+## 📖 Overview
+
+Buying or selling a used car often comes down to one question: what is a fair price? This project builds a supervised regression model that predicts a car's price from its key attributes, and wraps it in a simple web interface so anyone can try it.
+
+It covers the full ML workflow: data cleaning, exploratory data analysis, feature engineering, model training with Scikit-learn pipelines, and evaluation.
+
+## 📊 Results
+
+| Metric | Score |
+|---|---|
+| R² Score | **[0.85 — replace with your exact value]** |
+| MAE | [add value] |
+| RMSE | [add value] |
+
+> Replace these with the exact numbers from your notebook's evaluation cell.
+
+## 🔍 Features Used
+
+| Feature | Description |
+|---|---|
+| Mileage | Distance the car has been driven |
+| Purchase Year | Year the car was bought, used to derive age |
+| Car Model | Make/model of the car (encoded as a categorical feature) |
+| **Target: Price** | The value the model predicts |
+
+## 🛠️ Tech Stack
+
+- **Language:** Python
+- **Libraries:** Pandas, NumPy, Scikit-learn, Matplotlib / Seaborn
+- **Environment:** Jupyter Notebook
+- **Interface:** HTML front end [add Flask / Streamlit / other if used]
+
+## 🧪 Methodology
+
+1. **Data cleaning:** handle missing values, duplicates, and inconsistent entries
+2. **Exploratory data analysis:** explore distributions, correlations, and outliers
+3. **Preprocessing:** encode categorical variables and scale numeric features
+4. **Modeling:** train regression models using Scikit-learn pipelines
+5. **Evaluation:** compare models on a held-out test set using R², MAE, and RMSE
+
+## 📂 Project Structure
+
+```
+CarPricePredictor/
+├── data/              # Dataset (or link to the source below)
+├── notebooks/         # EDA and model training notebooks
+├── templates/         # HTML front end
+├── app.py             # Application entry point
+├── requirements.txt
+└── README.md
 ```
 
-If PowerShell blocks activation, allow scripts for this terminal only:
+> Adjust this tree to match your actual files.
 
-```powershell
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-.\.venv\Scripts\Activate.ps1
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Python 3.9+
+
+### Installation
+
+```bash
+git clone https://github.com/SarthakNere/CarPricePredictor.git
+cd CarPricePredictor
+pip install -r requirements.txt
 ```
 
-Install dependencies and start the app:
+### Run the app
 
-```powershell
-python -m pip install -r requirements.txt
-python application.py
+```bash
+python app.py
 ```
 
-Open http://127.0.0.1:5000. Keep the terminal open while using the app and press Ctrl+C to stop it.
+Then open `http://localhost:5000` in your browser.
 
-The app trains its small regression pipeline from `Cleaned_Car_data.csv` at startup. It no longer loads the legacy `LinearRegressionModel.pkl`, avoiding incompatibilities between scikit-learn pickle versions. The hero photography and web fonts are loaded from external services and require an internet connection; the app itself runs locally.
+### Explore the notebook
+
+```bash
+jupyter notebook
+```
+
+Open the notebook in `notebooks/` to see the full analysis and training process.
+
+## 📁 Dataset
+
+- **Source:** [add dataset name and link, e.g. Kaggle]
+- **Size:** [number of rows] records, [number of columns] columns
+
+## 🔮 Future Improvements
+
+- [ ] Try ensemble models (Random Forest, Gradient Boosting) and compare
+- [ ] Add hyperparameter tuning with cross-validation
+- [ ] Include more features such as fuel type and transmission
+- [ ] Deploy the app online
+
+## 👤 Author
+
+**Sarthak Nere**
+- GitHub: [@SarthakNere](https://github.com/SarthakNere)
+- LinkedIn: [linkedin.com/in/sarthaknere](https://linkedin.com/in/sarthaknere)
