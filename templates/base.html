@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101916">
+    <title>{% block title %}AutoWorth — Car price intelligence{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="{{ url_for('dashboard') }}" aria-label="AutoWorth home">
+            <span class="brand-mark">A</span><span>auto<span class="brand-light">worth</span></span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+            <a class="{{ 'active' if active_page == 'dashboard' else '' }}" href="{{ url_for('dashboard') }}">Overview</a>
+            <a class="{{ 'active' if active_page == 'predictor' else '' }}" href="{{ url_for('predictor') }}">Price estimator</a>
+            <a class="{{ 'active' if active_page == 'about' else '' }}" href="{{ url_for('about') }}">About</a>
+        </nav>
+        <a class="header-cta" href="{{ url_for('predictor') }}">Get an estimate <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main>{% block content %}{% endblock %}</main>
+
+    <footer class="site-footer">
+        <a class="brand brand-footer" href="{{ url_for('dashboard') }}"><span class="brand-mark">A</span><span>auto<span class="brand-light">worth</span></span></a>
+        <p>Smarter decisions start with a better estimate.</p>
+        <span>Estimates are informational, not a guaranteed sale price.</span>
+    </footer>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Price estimator — AutoWorth{% endblock %}
+{% block content %}
+<section class="page-hero estimator-hero">
+    <div class="eyebrow"><span class="eyebrow-dot"></span> Personalised price estimate</div>
+    <h1>Every car has a story.<br><span>Start with its value.</span></h1>
+    <p>Tell us a little about your car. Our model will find a useful starting point based on comparable listings.</p>
+</section>
+<section class="content-wrap estimator-layout">
+    <div class="estimator-intro">
+        <span class="number-tag">01 / YOUR DETAILS</span>
+        <h2>Let's get to know<br>your car.</h2>
+        <p>A few quick details are all we need. The estimate is generated instantly, right here.</p>
+        <div class="trust-note"><span class="trust-check">✓</span><span><strong>Private by design</strong><br>Your car details are only used to calculate this estimate.</span></div>
+    </div>
+    <div class="form-card">
+        <form id="estimate-form">
+            <div class="form-grid">
+                <label class="field"><span>Make / company</span><select id="company" name="company" required><option value="">Choose a brand</option>{% for company in company_models %}<option value="{{ company }}">{{ company }}</option>{% endfor %}</select></label>
+                <label class="field"><span>Car model</span><select id="car_model" name="car_model" required disabled><option value="">Choose a model</option></select></label>
+                <label class="field"><span>Year of purchase</span><select name="year" required><option value="">Choose a year</option>{% for year in years %}<option value="{{ year }}">{{ year }}</option>{% endfor %}</select></label>
+                <label class="field"><span>Fuel type</span><select name="fuel_type" required><option value="">Choose fuel type</option>{% for fuel in fuel_types %}<option value="{{ fuel }}">{{ fuel }}</option>{% endfor %}</select></label>
+                <label class="field field-full"><span>Kilometres driven</span><div class="input-suffix"><input type="number" name="kms_driven" min="0" step="1" placeholder="e.g. 45,000" required><span>km</span></div></label>
+            </div>
+            <button class="button button-primary submit-button" type="submit"><span>Calculate my estimate</span><span aria-hidden="true">↗</span></button>
+            <p class="form-error" id="form-error" role="alert" hidden></p>
+            <section class="result-card" id="result-card" aria-live="polite" hidden>
+                <span class="result-label">YOUR ESTIMATED PRICE</span>
+                <strong id="result-value"></strong>
+                <span>Use this as a helpful starting point, not a guaranteed offer.</span>
+            </section>
+        </form>
+    </div>
+</section>
+<section class="photo-break"><div><span class="banner-kicker">Make your next move with confidence</span><h2>Clarity looks good on you.</h2></div></section>
+{% endblock %}
+{% block scripts %}
+<script>
+    window.companyModels = {{ company_models|tojson }};
+</script>
+<script src="{{ url_for('static', filename='js/predictor.js') }}" defer></script>
+{% endblock %}
